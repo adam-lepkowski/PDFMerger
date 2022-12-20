@@ -1,11 +1,26 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'merger/styles.css' %}">
 </head>
+
 <body>
-    <h1>Index</h1>
+    <section id="content">
+        <div>
+            <h1 class="title">MERGE PDFs</h1>
+            <h2 class="subtitle">Select files you want to merge</h2>
+            <div class="file-row">             
+                <label for="file-upload">Select file</label>
+                <input id="file-upload" type="file" accept=".pdf" name="file-upload" class="file-input">
+            </div>
+        </div>
+    </section>
 </body>
+<script src="{% static 'merger/index.js' %}" charset="UTF-8"></script>
 </html>
