@@ -30,8 +30,11 @@ function createInputDiv(parent) {
         input.setAttribute("id", inputId);
         input.setAttribute("accept", ".pdf");
         input.addEventListener("change", addNextInput);
+        var icon = document.createElement("i");
+        icon.classList.add("fa-solid", "fa-circle-minus");
         div.appendChild(label);
         div.appendChild(input);
+        div.appendChild(icon);
         parent.appendChild(div);
     }
 }
