@@ -6,7 +6,7 @@ body {
     margin: 0;
 }
 
-#content {
+.content {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -20,6 +20,10 @@ body {
 .subtitle {
     color: #85586F;
     font-weight: 400;
+}
+
+.file-row {
+    display: flex;
 }
 
 /* input[type="file"] {
