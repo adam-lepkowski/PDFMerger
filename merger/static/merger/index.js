@@ -36,6 +36,7 @@ function createInputDiv(parent) {
         div.appendChild(label);
         div.appendChild(input);
         div.appendChild(icon);
+        div.style.order = uploadsAmount;
         parent.appendChild(div);
     }
 }
