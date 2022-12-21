@@ -32,9 +32,15 @@ function createInputDiv(parent) {
         input.addEventListener("change", addNextInput);
         var icon = document.createElement("i");
         icon.classList.add("fa-solid", "fa-circle-minus");
+        icon.addEventListener("click", deleteRow)
         div.appendChild(label);
         div.appendChild(input);
         div.appendChild(icon);
         parent.appendChild(div);
     }
+}
+
+function deleteRow() {
+    var row = this.parentElement;
+    row.parentElement.removeChild(row);
 }
