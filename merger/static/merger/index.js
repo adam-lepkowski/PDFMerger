@@ -28,9 +28,9 @@ function createInputDiv(parent) {
         var input = document.createElement("input");
         var icon = document.createElement("i");
         div.classList.add("file-row");
-        navDiv.classList.add("file-swap");
-        upIcon.classList.add("fa-solid", "fa-circle-plus");
-        downIcon.classList.add("fa-solid", "fa-circle-minus");
+        navDiv.classList.add("nav-div");
+        upIcon.classList.add("fa-solid", "fa-circle-plus", "nav-button");
+        downIcon.classList.add("fa-solid", "fa-circle-minus", "nav-button");
         label.setAttribute("for", inputId);
         label.appendChild(text);
         input.setAttribute("type", "file");
