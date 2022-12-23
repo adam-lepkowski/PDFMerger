@@ -52,6 +52,7 @@ function createInputDiv(parent) {
 function deleteRow() {
     var row = this.parentElement;
     row.parentElement.removeChild(row);
+    resetNavButtons();
 }
 
 function resetNavButtons() {
