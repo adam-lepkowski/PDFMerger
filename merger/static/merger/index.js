@@ -53,3 +53,31 @@ function deleteRow() {
     var row = this.parentElement;
     row.parentElement.removeChild(row);
 }
+
+function resetNavButtons() {
+    var buttons = document.querySelectorAll(".nav-button");
+    for (i = 0; buttons.length > i; i++) {
+        buttons[i].parentElement.removeChild(buttons[i]);
+    }
+
+    var rows = document.querySelectorAll(".nav-div");
+    if (rows.length > 1) {
+        var upIcon = document.createElement("i");
+        var downIcon = document.createElement("i");
+        upIcon.classList.add("fa-solid", "fa-circle-plus", "nav-button");
+        downIcon.classList.add("fa-solid", "fa-circle-minus", "nav-button");
+        rows[0].appendChild(downIcon);
+        rows[rows.length - 1].appendChild(upIcon);
+        if (rows.length > 2) {
+            for (i = 1; rows.length - 1 > i; i++) {
+                var upIcon = document.createElement("i");
+                var downIcon = document.createElement("i");
+                upIcon.classList.add("fa-solid", "fa-circle-plus", "nav-button");
+                downIcon.classList.add("fa-solid", "fa-circle-minus", "nav-button");
+                rows[i].appendChild(upIcon);
+                rows[i].appendChild(downIcon);
+
+            }
+        }
+    }
+}
