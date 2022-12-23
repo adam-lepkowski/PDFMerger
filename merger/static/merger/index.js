@@ -20,24 +20,32 @@ function createInputDiv(parent) {
     if (uploadsAmount < 5) {
         var inputId = "file-upload" + uploadsAmount.toString();
         var div = document.createElement("div");
-        div.classList.add("file-row");
+        var navDiv = document.createElement("div");
+        var upIcon = document.createElement("i");
+        var downIcon = document.createElement("i");
         var label = document.createElement("label");
-        label.setAttribute("for", inputId);
         var text = document.createTextNode("Select file");
-        label.appendChild(text);
         var input = document.createElement("input");
+        var icon = document.createElement("i");
+        div.classList.add("file-row");
+        navDiv.classList.add("file-swap");
+        upIcon.classList.add("fa-solid", "fa-circle-plus");
+        downIcon.classList.add("fa-solid", "fa-circle-minus");
+        label.setAttribute("for", inputId);
+        label.appendChild(text);
         input.setAttribute("type", "file");
         input.setAttribute("id", inputId);
         input.setAttribute("accept", ".pdf");
         input.addEventListener("change", addNextInput);
-        var icon = document.createElement("i");
         icon.classList.add("fa-solid", "fa-circle-minus");
         icon.addEventListener("click", deleteRow)
+        navDiv.appendChild(upIcon);
+        div.appendChild(navDiv);
         div.appendChild(label);
         div.appendChild(input);
         div.appendChild(icon);
-        div.style.order = uploadsAmount;
         parent.appendChild(div);
+        div.previousElementSibling.firstElementChild.appendChild(downIcon);
     }
 }
 
