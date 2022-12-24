@@ -15,26 +15,33 @@ function addNextInput() {
     }
 }
 
+function createDirectionIcons() {
+    var upIcon = document.createElement("i");
+    var downIcon = document.createElement("i");
+    upIcon.classList.add("fa-solid", "fa-circle-plus", "nav-button");
+    upIcon.direction = "up";
+    upIcon.addEventListener("click", swapPosition);
+    downIcon.classList.add("fa-solid", "fa-circle-minus", "nav-button");
+    downIcon.direction = "down";
+    downIcon.addEventListener("click", swapPosition);
+    return [upIcon, downIcon];
+}
+
 function createInputDiv(parent) {
     var uploadsAmount = document.querySelectorAll("input").length;
     if (uploadsAmount < 5) {
         var inputId = "file-upload" + uploadsAmount.toString();
         var div = document.createElement("div");
         var navDiv = document.createElement("div");
-        var upIcon = document.createElement("i");
-        var downIcon = document.createElement("i");
+        var icons = createDirectionIcons();
+        var upIcon = icons[0];
+        var downIcon = icons[1];
         var label = document.createElement("label");
         var text = document.createTextNode("Select file");
         var input = document.createElement("input");
         var icon = document.createElement("i");
         div.classList.add("file-row");
         navDiv.classList.add("nav-div");
-        upIcon.classList.add("fa-solid", "fa-circle-plus", "nav-button");
-        upIcon.direction = "up";
-        upIcon.addEventListener("click", swapPosition);
-        downIcon.classList.add("fa-solid", "fa-circle-minus", "nav-button");
-        downIcon.direction = "down";
-        downIcon.addEventListener("click", swapPosition);
         label.setAttribute("for", inputId);
         label.appendChild(text);
         input.setAttribute("type", "file");
@@ -67,22 +74,16 @@ function resetNavButtons() {
 
     var rows = document.querySelectorAll(".nav-div");
     if (rows.length > 1) {
-        var upIcon = document.createElement("i");
-        var downIcon = document.createElement("i");
-        upIcon.classList.add("fa-solid", "fa-circle-plus", "nav-button");
-        downIcon.classList.add("fa-solid", "fa-circle-minus", "nav-button");
+        var icons = createDirectionIcons();
+        var upIcon = icons[0];
+        var downIcon = icons[1];
         rows[0].appendChild(downIcon);
         rows[rows.length - 1].appendChild(upIcon);
         if (rows.length > 2) {
             for (i = 1; rows.length - 1 > i; i++) {
-                var upIcon = document.createElement("i");
-                var downIcon = document.createElement("i");
-                upIcon.classList.add("fa-solid", "fa-circle-plus", "nav-button");
-                upIcon.direction = "up";
-                upIcon.addEventListener("click", swapPosition);
-                downIcon.classList.add("fa-solid", "fa-circle-minus", "nav-button");
-                downIcon.direction = "down";
-                downIcon.addEventListener("click", swapPosition);
+                var icons = createDirectionIcons();
+                var upIcon = icons[0];
+                var downIcon = icons[1];
                 rows[i].appendChild(upIcon);
                 rows[i].appendChild(downIcon);
 
