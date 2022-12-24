@@ -30,7 +30,11 @@ function createInputDiv(parent) {
         div.classList.add("file-row");
         navDiv.classList.add("nav-div");
         upIcon.classList.add("fa-solid", "fa-circle-plus", "nav-button");
+        upIcon.direction = "up";
+        upIcon.addEventListener("click", swapPosition);
         downIcon.classList.add("fa-solid", "fa-circle-minus", "nav-button");
+        downIcon.direction = "down";
+        downIcon.addEventListener("click", swapPosition);
         label.setAttribute("for", inputId);
         label.appendChild(text);
         input.setAttribute("type", "file");
@@ -74,11 +78,28 @@ function resetNavButtons() {
                 var upIcon = document.createElement("i");
                 var downIcon = document.createElement("i");
                 upIcon.classList.add("fa-solid", "fa-circle-plus", "nav-button");
+                upIcon.direction = "up";
+                upIcon.addEventListener("click", swapPosition);
                 downIcon.classList.add("fa-solid", "fa-circle-minus", "nav-button");
+                downIcon.direction = "down";
+                downIcon.addEventListener("click", swapPosition);
                 rows[i].appendChild(upIcon);
                 rows[i].appendChild(downIcon);
 
             }
         }
     }
+}
+
+function swapPosition() {
+    var currentRow = this.parentElement.parentElement;
+    var parent = currentRow.parentElement;
+    if (this.direction == "up") {
+        var nextRow = currentRow.previousElementSibling;
+        parent.insertBefore(currentRow, nextRow);
+    } else {
+        var nextRow = currentRow.nextElementSibling;
+        parent.insertBefore(nextRow, currentRow);
+    }
+    resetNavButtons();
 }
