@@ -40,6 +40,14 @@ body {
     padding: 0.75rem 2rem;
 }
 
+.file-row label:hover {
+    background-color: #c2a591;
+}
+
+.file-row label:active {
+    background-color: #ab8e7a;
+}
+
 .file-row i {
     color: #D0B8A8;
     font-size: 1.5rem;
