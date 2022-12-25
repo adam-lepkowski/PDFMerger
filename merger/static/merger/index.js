@@ -84,12 +84,17 @@ function createInputDiv(parent) {
 }
 
 /**
- * Delete "file-row"
+ * Delete "file-row".
  * @this - minus icon in "file-row"
  */
 function deleteRow() {
     var row = this.parentElement;
+    var parent = row.parentElement;
     row.parentElement.removeChild(row);
+    var rows = document.querySelectorAll(".file-row");
+    if (rows.length == 1) {
+        createInputDiv(parent);
+    }
     resetNavButtons();
 }
 
