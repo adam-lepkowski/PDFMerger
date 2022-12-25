@@ -14,7 +14,9 @@ body {
 
 .title {
     color: #85586F;
+    font-size: 3rem;
     font-weight: 500;
+    margin: 2% 0 1% 0;
 }
 
 .subtitle {
