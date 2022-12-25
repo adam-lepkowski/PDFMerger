@@ -27,6 +27,7 @@ body {
 }
 
 .file-row {
+    align-items: center;
     display: flex;
     padding-top: 0.5rem;
 }
@@ -35,7 +36,21 @@ body {
     border-radius: 20px;
     background-color: #D0B8A8;
     color: #FFFFFF;
+    margin: 0 0.5rem 0 0.5rem;
     padding: 0.75rem 2rem;
+}
+
+.file-row i {
+    color: #D0B8A8;
+    font-size: 1.5rem;
+}
+
+.file-row i:hover {
+    color: #c2a591;
+}
+
+.file-row i:active {
+    color: #ab8e7a;
 }
 
 input[type="file"] {
