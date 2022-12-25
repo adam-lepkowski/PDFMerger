@@ -21,6 +21,17 @@ function addNextInput() {
 }
 
 /**
+ * Preset a delete icon and append it to given file-row
+ * @param row - file-row div
+ */
+function appendDeleteIcon(row) {
+    var icon = document.createElement("i");
+    icon.classList.add("fa-solid", "fa-circle-minus");
+    icon.addEventListener("click", deleteRow)
+    row.appendChild(icon);
+}
+
+/**
  * Create upIcon and downIcon representing an up and down arrow to change
  * file-row position in parent div.
  * @returns - upIcon and downIcon
@@ -48,13 +59,12 @@ function createInputDiv(parent) {
         var inputId = "file-upload" + uploadsAmount.toString();
         var div = document.createElement("div");
         var navDiv = document.createElement("div");
-        var icons = createDirectionIcons();
-        var upIcon = icons[0];
-        var downIcon = icons[1];
+        var directionIcons = createDirectionIcons();
+        var upIcon = directionIcons[0];
+        var downIcon = directionIcons[1];
         var label = document.createElement("label");
         var text = document.createTextNode("Select file");
         var input = document.createElement("input");
-        var icon = document.createElement("i");
         div.classList.add("file-row");
         navDiv.classList.add("nav-div");
         label.setAttribute("for", inputId);
@@ -63,13 +73,11 @@ function createInputDiv(parent) {
         input.setAttribute("id", inputId);
         input.setAttribute("accept", ".pdf");
         input.addEventListener("change", addNextInput);
-        icon.classList.add("fa-solid", "fa-circle-minus");
-        icon.addEventListener("click", deleteRow)
         navDiv.appendChild(upIcon);
         div.appendChild(navDiv);
         div.appendChild(label);
         div.appendChild(input);
-        div.appendChild(icon);
+        appendDeleteIcon(div);
         parent.appendChild(div);
         div.previousElementSibling.firstElementChild.appendChild(downIcon);
     }
@@ -144,9 +152,6 @@ function resetDeleteButtons() {
 
     var rows = document.querySelectorAll(".file-row");
     for (i = 1; rows.length > i; i++) {
-        var icon = document.createElement("i");
-        icon.classList.add("fa-solid", "fa-circle-minus");
-        icon.addEventListener("click", deleteRow)
-        rows[i].appendChild(icon);
+        appendDeleteIcon(rows[i]);
     }
 }
