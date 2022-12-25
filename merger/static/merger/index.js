@@ -28,10 +28,10 @@ function addNextInput() {
 function createDirectionIcons() {
     var upIcon = document.createElement("i");
     var downIcon = document.createElement("i");
-    upIcon.classList.add("fa-solid", "fa-circle-plus", "nav-button");
+    upIcon.classList.add("fa-solid", "fa-circle-up", "nav-button");
     upIcon.direction = "up";
     upIcon.addEventListener("click", swapPosition);
-    downIcon.classList.add("fa-solid", "fa-circle-minus", "nav-button");
+    downIcon.classList.add("fa-solid", "fa-circle-down", "nav-button");
     downIcon.direction = "down";
     downIcon.addEventListener("click", swapPosition);
     return [upIcon, downIcon];
@@ -129,4 +129,24 @@ function swapPosition() {
         parent.insertBefore(nextRow, currentRow);
     }
     resetNavButtons();
+    resetDeleteButtons();
+}
+
+/**
+ * Remove all delete buttons and set up new for all rows except for the first
+ * one.
+ */
+function resetDeleteButtons() {
+    var buttons = document.querySelectorAll(".fa-circle-minus");
+    for (i = 0; buttons.length > i; i++) {
+        buttons[i].parentElement.removeChild(buttons[i]);
+    }
+
+    var rows = document.querySelectorAll(".file-row");
+    for (i = 1; rows.length > i; i++) {
+        var icon = document.createElement("i");
+        icon.classList.add("fa-solid", "fa-circle-minus");
+        icon.addEventListener("click", deleteRow)
+        rows[i].appendChild(icon);
+    }
 }
