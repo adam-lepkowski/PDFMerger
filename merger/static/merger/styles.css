@@ -26,6 +26,12 @@ body {
     margin: 0 0 0.5% 0;
 }
 
+.rows {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
 .file-row {
     align-items: center;
     display: flex;
