@@ -28,6 +28,14 @@ body {
 
 .file-row {
     display: flex;
+    padding-top: 0.5rem;
+}
+
+.file-row label {
+    border-radius: 20px;
+    background-color: #D0B8A8;
+    color: #FFFFFF;
+    padding: 0.75rem 2rem;
 }
 
 input[type="file"] {
