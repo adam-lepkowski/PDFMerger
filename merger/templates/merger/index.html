@@ -11,18 +11,20 @@
 </head>
 
 <body>
-    <h1 class="title">MERGE PDFs</h1>
-    <h2 class="subtitle">Select files you want to merge</h2>
-    <form action="" method="">
-        <div class="rows">
-            <div class="file-row">
-                <div class="nav-div"></div>
-                <label for="file-upload">Select file</label>
-                <input id="file-upload" type="file" accept=".pdf" name="file-upload" class="file-input">
+    <section id="content">
+        <h1 class="title">MERGE PDFs</h1>
+        <h2 class="subtitle">Select files you want to merge</h2>
+        <form action="" method="">
+            <div class="rows">
+                <div class="file-row">
+                    <div class="nav-div"></div>
+                    <label for="file-upload">Select file</label>
+                    <input id="file-upload" type="file" accept=".pdf" name="file-upload" class="file-input">
+                </div>
             </div>
-        </div>
-        <input type="submit" value="MERGE">
-    </form>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
 </body>
 <script src="{% static 'merger/index.js' %}" charset="UTF-8"></script>
 <script src="https://kit.fontawesome.com/218e506e4f.js" crossorigin="anonymous"></script>
