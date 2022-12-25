@@ -2,6 +2,11 @@ var input = document.querySelector(".file-input");
 
 input.addEventListener("change", addNextInput);
 
+
+/**
+ * Get file name from file input and create another file-row.
+ * @this - file input instance
+ */
 function addNextInput() {
     var value = this.value;
     var label = this.previousElementSibling;
@@ -15,6 +20,11 @@ function addNextInput() {
     }
 }
 
+/**
+ * Create upIcon and downIcon representing an up and down arrow to change
+ * file-row position in parent div.
+ * @returns - upIcon and downIcon
+ */
 function createDirectionIcons() {
     var upIcon = document.createElement("i");
     var downIcon = document.createElement("i");
@@ -27,6 +37,11 @@ function createDirectionIcons() {
     return [upIcon, downIcon];
 }
 
+
+/**
+ * Create a new "file-row" and append it to containing div.
+ * @param parent - parent div of class ".rows"
+ */
 function createInputDiv(parent) {
     var uploadsAmount = document.querySelectorAll("input").length;
     if (uploadsAmount < 5) {
@@ -60,12 +75,19 @@ function createInputDiv(parent) {
     }
 }
 
+/**
+ * Delete "file-row"
+ * @this - minus icon in "file-row"
+ */
 function deleteRow() {
     var row = this.parentElement;
     row.parentElement.removeChild(row);
     resetNavButtons();
 }
 
+/**
+ * Remove existing and create new up and down icons in all file-row divs.
+ */
 function resetNavButtons() {
     var buttons = document.querySelectorAll(".nav-button");
     for (i = 0; buttons.length > i; i++) {
@@ -92,6 +114,10 @@ function resetNavButtons() {
     }
 }
 
+/**
+ * Move file-row up or down.
+ * @this - file-row up or down icon.
+ */
 function swapPosition() {
     var currentRow = this.parentElement.parentElement;
     var parent = currentRow.parentElement;
