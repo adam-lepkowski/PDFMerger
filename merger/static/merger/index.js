@@ -54,7 +54,7 @@ function createDirectionIcons() {
  * @param parent - parent div of class ".rows"
  */
 function createInputDiv(parent) {
-    var uploadsAmount = document.querySelectorAll("input").length;
+    var uploadsAmount = document.querySelectorAll(".file-row").length;
     if (uploadsAmount < 5) {
         var inputId = "file-upload" + uploadsAmount.toString();
         var div = document.createElement("div");
