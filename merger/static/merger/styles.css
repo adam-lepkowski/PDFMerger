@@ -82,3 +82,22 @@ input[type="file"] {
 }
 
 /* submit button */
+
+.submit-btn {
+    background-color: #85586F;
+    border: none;
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
+    margin-top: 4%;
+}
+
+.submit-btn:hover {
+    background-color: #785065;
+}
+
+.submit-btn:active {
+    background-color: #684557;
+}
