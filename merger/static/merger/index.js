@@ -72,6 +72,7 @@ function createInputDiv(parent) {
         input.setAttribute("type", "file");
         input.setAttribute("id", inputId);
         input.setAttribute("accept", ".pdf");
+        input.setAttribute("name", inputId);
         input.addEventListener("change", addNextInput);
         navDiv.appendChild(upIcon);
         div.appendChild(navDiv);
