@@ -27,6 +27,14 @@ body {
     margin: 0 0 0.5% 0;
 }
 
+/* form */
+
+.file-form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
 /* file rows */
 .rows {
     align-items: center;
