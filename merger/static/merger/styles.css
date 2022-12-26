@@ -12,6 +12,7 @@ body {
     flex-direction: column;
 }
 
+/* title and subtitle */
 .title {
     color: #85586F;
     font-size: 3rem;
@@ -26,6 +27,7 @@ body {
     margin: 0 0 0.5% 0;
 }
 
+/* file rows */
 .rows {
     align-items: center;
     display: flex;
@@ -70,3 +72,5 @@ body {
 input[type="file"] {
     display: none;
 }
+
+/* submit button */
