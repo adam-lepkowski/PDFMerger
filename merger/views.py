@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.core.files.base import ContentFile
+from django.views.generic import TemplateView
 
 from .models import PdfModel
 from .utils import merge
@@ -31,7 +31,5 @@ class IndexView(View):
         return render(request, "merger/index.html")
 
 
-class DownloadView(View):
-
-    def get(self, request):
-        return render(request, "merger/download.html")
+class DownloadView(TemplateView):
+    template_name = "merger/download.html"
