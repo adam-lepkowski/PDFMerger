@@ -1,33 +1,29 @@
+{% extends "base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}
+Merge PDFs
+{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'merger/styles.css' %}">
-</head>
-
-<body>
-    <section id="content">
-        <h1 class="title">MERGE PDFs</h1>
-        <h2 class="subtitle">Select files you want to merge</h2>
-        <form action="" method="POST" class="file-form" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="rows">
-                <div class="file-row">
-                    <div class="nav-div"></div>
-                    <label for="file-upload">Select file</label>
-                    <input id="file-upload" type="file" accept=".pdf" name="file-upload" class="file-input">
-                </div>
+{% block content %}
+<section id="content">
+    <h1 class="title">MERGE PDFs</h1>
+    <h2 class="subtitle">Select files you want to merge</h2>
+    <form action="" method="POST" class="file-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="rows">
+            <div class="file-row">
+                <div class="nav-div"></div>
+                <label for="file-upload">Select file</label>
+                <input id="file-upload" type="file" accept=".pdf" name="file-upload" class="file-input">
             </div>
-            <button type="submit" class="submit-btn">Submit</button>
-        </form>
-    </section>
-</body>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</section>
+{% endblock %}
+
+{% block scripts %}
 <script src="{% static 'merger/index.js' %}" charset="UTF-8"></script>
 <script src="https://kit.fontawesome.com/218e506e4f.js" crossorigin="anonymous"></script>
-
-</html>
+{% endblock %}
