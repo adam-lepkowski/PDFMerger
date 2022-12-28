@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -30,8 +29,15 @@ class IndexView(View):
         pdf = PdfModel(file=merged.getvalue())
         pdf.save()
         merged.close()
-        return HttpResponseRedirect(reverse("download"))
+        filename = pdf.file.url.split("/")[-1]
+        return HttpResponseRedirect(reverse("download", args=[filename]))
 
 
-class DownloadView(TemplateView):
-    template_name = "merger/download.html"
+class DownloadView(View):
+    
+    def get(self, request, filename):
+        file = PdfModel.objects.get(file__endswith=str(filename))
+        context = {
+            "file": file
+        }
+        return render(request, "merger/download.html", context)
