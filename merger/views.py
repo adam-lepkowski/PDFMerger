@@ -29,3 +29,9 @@ class IndexView(View):
         pdf.save()
         merged.close()
         return render(request, "merger/index.html")
+
+
+class DownloadView(View):
+
+    def get(self, request):
+        return render(request, "merger/download.html")
