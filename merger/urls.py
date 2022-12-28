@@ -5,5 +5,5 @@ from . import views
 
 urlpatterns = [
     path("", views.IndexView.as_view()),
-    path("download/", views.DownloadView.as_view(), name="download")
+    path("download/<str:filename>", views.DownloadView.as_view(), name="download")
 ]
