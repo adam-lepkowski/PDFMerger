@@ -2,6 +2,7 @@ from unittest.mock import patch
 from io import BytesIO
 
 from django.test import TestCase
+from parameterized import parameterized
 
 from merger.models import PdfModel
 
@@ -16,3 +17,14 @@ class TestPdfModel(TestCase):
         file.save()
         contentfile_mock.assert_called_with(uploaded_file, "upload.pdf")
         super_save_mock.assert_called_once()
+
+    @parameterized.expand([
+        ("str", "string"),
+        ("int", 1),
+        ("float", 1.2)
+    ])
+    def test_save_not_bytes_raises_error(self, type, value):
+        invalid_type = value
+        file = PdfModel(file=invalid_type)
+        with self.assertRaises(TypeError):
+            file.save()
