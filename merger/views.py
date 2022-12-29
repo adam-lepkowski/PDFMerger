@@ -34,8 +34,20 @@ class IndexView(View):
 
 
 class DownloadView(View):
+    """
+    Display download page.
+    """
     
     def get(self, request, filename):
+        """
+        Render download page.
+
+        Parameters
+        ----------
+        filename : str
+            merged file's name
+        """
+
         file = PdfModel.objects.get(file__endswith=str(filename))
         context = {
             "file": file
