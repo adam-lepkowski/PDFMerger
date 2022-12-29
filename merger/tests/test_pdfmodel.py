@@ -9,9 +9,10 @@ from merger.models import PdfModel
 
 class TestPdfModel(TestCase):
 
+    @patch("merger.models.uuid.uuid4", return_value="upload")
     @patch("django.db.models.Model.save")
     @patch("merger.models.ContentFile")
-    def test_save(self, contentfile_mock, super_save_mock):
+    def test_save(self, contentfile_mock, super_save_mock, uuid_mock):
         uploaded_file = BytesIO(b"uploaded_content")
         file = PdfModel(file=uploaded_file)
         file.save()
