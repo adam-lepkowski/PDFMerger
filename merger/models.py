@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.core.files.base import ContentFile
 
@@ -14,7 +16,7 @@ class PdfModel(models.Model):
         Convert BytesIO into ContentFile before saving.
         """
 
-        self.file = ContentFile(self.file, "upload.pdf")
+        self.file = ContentFile(self.file, f"{uuid.uuid4()}.pdf")
         super().save(*args, **kwargs)
     
     def __str__(self):
