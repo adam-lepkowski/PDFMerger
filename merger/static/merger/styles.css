@@ -101,3 +101,24 @@ input[type="file"] {
 .submit-btn:active {
     background-color: #684557;
 }
+
+/* download button */
+
+.download-btn {
+    background-color: #85586F;
+    border: none;
+    border-radius: 30px;
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 1rem 3rem;
+    margin-top: 1%;
+}
+
+.download-btn:hover {
+    background-color: #785065;
+}
+
+.download-btn:active {
+    background-color: #684557;
+}
