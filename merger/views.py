@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, FileResponse
 from django.urls import reverse
 
 from .models import PdfModel
@@ -37,7 +37,7 @@ class DownloadView(View):
     """
     Display download page.
     """
-    
+
     def get(self, request, filename):
         """
         Render download page.
@@ -50,6 +50,21 @@ class DownloadView(View):
 
         file = PdfModel.objects.get(file__endswith=str(filename))
         context = {
-            "file": file
+            "file": file,
+            "filename": filename
         }
         return render(request, "merger/download.html", context)
+
+    def post(self, request, filename):
+        """
+        Serve file.
+        
+        Parameters
+        ----------
+        filename : str
+            merged file's name
+        """
+
+        name = request.POST["file"]
+        file = PdfModel.objects.get(file=name)
+        return FileResponse(open(file.file.path, "rb"), as_attachment=True, filename="merged.pdf")
