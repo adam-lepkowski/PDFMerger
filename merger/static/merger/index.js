@@ -73,6 +73,7 @@ function createInputDiv(parent) {
         input.setAttribute("id", inputId);
         input.setAttribute("accept", ".pdf");
         input.setAttribute("name", inputId);
+        input.classList.add("file-input");
         input.addEventListener("change", addNextInput);
         navDiv.appendChild(upIcon);
         div.appendChild(navDiv);
@@ -81,6 +82,7 @@ function createInputDiv(parent) {
         appendDeleteIcon(div);
         parent.appendChild(div);
         div.previousElementSibling.firstElementChild.appendChild(downIcon);
+        resetRequired();
     }
 }
 
@@ -97,6 +99,7 @@ function deleteRow() {
         createInputDiv(parent);
     }
     resetNavButtons();
+    resetRequired();
 }
 
 /**
@@ -144,6 +147,7 @@ function swapPosition() {
     }
     resetNavButtons();
     resetDeleteButtons();
+    resetRequired();
 }
 
 /**
@@ -159,5 +163,24 @@ function resetDeleteButtons() {
     var rows = document.querySelectorAll(".file-row");
     for (i = 1; rows.length > i; i++) {
         appendDeleteIcon(rows[i]);
+    }
+}
+
+/**
+ * Reset required file-row inputs so that minimum two files are sent to 
+ * be merged.
+ */
+function resetRequired() {
+    var inputs = document.querySelectorAll(".file-input");
+    if (inputs.length > 1) {
+        for (i = 0; inputs.length > i; i++) {
+            if (i < 2) {
+                inputs[i].required = true;
+            } else {
+                inputs[i].required = false;
+            }
+        }
+    } else {
+        inputs[0].required = true;
     }
 }
