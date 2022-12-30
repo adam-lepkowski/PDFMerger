@@ -2,11 +2,19 @@
 {% load static %}
 
 {% block title %}
-    Download your file
+Download your file
 {% endblock %}
 
 {% block content %}
-
+<section id="content">
+    <h1 class="title">Thank you!</h1>
+    <h2 class="subtitle">Your file is ready to download</h2>
+    <form action="{% url 'download' filename %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="file" value="{{ file.file.name }}">
+        <button type="submit" class="download-btn">Download</button>
+    </form>
+</section>
 {% endblock %}
 
 {% block scripts %}
