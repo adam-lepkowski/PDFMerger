@@ -9,6 +9,7 @@ Merge PDFs
 <section id="content">
     <h1 class="title">MERGE PDFs</h1>
     <h2 class="subtitle">Select files you want to merge</h2>
+    <h2 class="error-msg {% if not error %}hidden{% endif %}">Select at least two files!</h2>
     <form action="" method="POST" class="file-form" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="rows">
