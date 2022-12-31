@@ -174,19 +174,22 @@ function resetDeleteButtons() {
  */
 function resetRequired() {
     var inputs = document.querySelectorAll(".file-input");
-    if (inputs.length > 1) {
-        for (i = 0; inputs.length > i; i++) {
-            if (i < 2) {
-                inputs[i].required = true;
-                inputs[i].addEventListener("invalid", displayError)
-            } else {
-                inputs[i].required = false;
-                inputs[i].removeEventListener("invalid", displayError)
+    var required = document.querySelectorAll("[required]");
+    if (required.length < 2) {
+        if (inputs.length > 1) {
+            for (i = 0; inputs.length > i; i++) {
+                if (i < 2) {
+                    inputs[i].required = true;
+                    inputs[i].addEventListener("invalid", displayError)
+                } else {
+                    inputs[i].required = false;
+                    inputs[i].removeEventListener("invalid", displayError)
+                }
             }
+        } else {
+            inputs[0].required = true;
+            inputs[0].addEventListener("invalid", displayError)
         }
-    } else {
-        inputs[0].required = true;
-        inputs[0].addEventListener("invalid", displayError)
     }
 }
 
