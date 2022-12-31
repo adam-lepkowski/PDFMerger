@@ -1,3 +1,6 @@
+import os
+from dotenv import load_dotenv, find_dotenv
+
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponseRedirect, FileResponse
@@ -5,6 +8,9 @@ from django.urls import reverse
 
 from .models import PdfModel
 from .utils import merge
+
+
+load_dotenv(find_dotenv())
 
 
 class IndexView(View):
@@ -18,9 +24,10 @@ class IndexView(View):
         """
 
         context = {
-            "error": False
+            "error": False,
+            "kit": os.environ["FONT_AWESOME"]
         }
-        return render(request, "merger/index.html")
+        return render(request, "merger/index.html", context)
 
     def post(self, request):
         """
@@ -36,7 +43,8 @@ class IndexView(View):
             filename = pdf.file.url.split("/")[-1]
             return HttpResponseRedirect(reverse("download", args=[filename]))
         context = {
-            "error": True
+            "error": True,
+            "kit": os.environ["FONT_AWESOME"]
         }
         return render(request, "merger/index.html", context)
 
