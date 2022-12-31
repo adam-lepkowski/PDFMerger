@@ -17,6 +17,9 @@ class IndexView(View):
         Display main page.
         """
 
+        context = {
+            "error": False
+        }
         return render(request, "merger/index.html")
 
     def post(self, request):
@@ -25,12 +28,17 @@ class IndexView(View):
         """
 
         files = [request.FILES[file] for file in request.FILES]
-        merged = merge(files)
-        pdf = PdfModel(file=merged.getvalue())
-        pdf.save()
-        merged.close()
-        filename = pdf.file.url.split("/")[-1]
-        return HttpResponseRedirect(reverse("download", args=[filename]))
+        if len(files) >= 2:
+            merged = merge(files)
+            pdf = PdfModel(file=merged.getvalue())
+            pdf.save()
+            merged.close()
+            filename = pdf.file.url.split("/")[-1]
+            return HttpResponseRedirect(reverse("download", args=[filename]))
+        context = {
+            "error": True
+        }
+        return render(request, "merger/index.html", context)
 
 
 class DownloadView(View):
