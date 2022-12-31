@@ -190,11 +190,17 @@ function resetRequired() {
     }
 }
 
+/**
+ * Display error message when submiting less than two files to merge.
+ */
 function displayError() {
     var msg = document.querySelector(".error-msg");
     msg.classList.remove("hidden");
 }
 
+/**
+ * Hide previously displayed "less than two files to merge" error message.
+ */
 function hideError() {
     var msg = document.querySelector(".error-msg");
     msg.classList.add("hidden");
