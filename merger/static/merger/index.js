@@ -1,6 +1,7 @@
 var input = document.querySelector(".file-input");
 
 input.addEventListener("change", addNextInput);
+input.addEventListener("invalid", displayError);
 
 
 /**
@@ -176,11 +177,19 @@ function resetRequired() {
         for (i = 0; inputs.length > i; i++) {
             if (i < 2) {
                 inputs[i].required = true;
+                inputs[i].addEventListener("invalid", displayError)
             } else {
                 inputs[i].required = false;
+                inputs[i].removeEventListener("invalid", displayError)
             }
         }
     } else {
         inputs[0].required = true;
+        inputs[0].addEventListener("invalid", displayError)
     }
+}
+
+function displayError() {
+    var msg = document.querySelector(".error-msg");
+    msg.classList.remove("hidden");
 }
