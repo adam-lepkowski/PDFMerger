@@ -58,7 +58,7 @@ class DownloadView(View):
     def post(self, request, filename):
         """
         Serve file.
-        
+
         Parameters
         ----------
         filename : str
@@ -67,4 +67,6 @@ class DownloadView(View):
 
         name = request.POST["file"]
         file = PdfModel.objects.get(file=name)
-        return FileResponse(open(file.file.path, "rb"), as_attachment=True, filename="merged.pdf")
+        return FileResponse(open(file.file.path, "rb"),
+                            as_attachment=True,
+                            filename="merged.pdf")
