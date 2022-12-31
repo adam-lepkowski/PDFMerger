@@ -81,6 +81,18 @@ input[type="file"] {
     display: none;
 }
 
+/* error message */
+.error-msg {
+    color: #f10d24d1;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 0 0 0.5% 0;
+}
+
+.hidden {
+    display: none;
+}
+
 /* submit button */
 
 .submit-btn {
