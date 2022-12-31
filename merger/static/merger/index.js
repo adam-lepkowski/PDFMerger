@@ -19,6 +19,7 @@ function addNextInput() {
     } else {
         label.textContent = "Select file";
     }
+    hideError();
 }
 
 /**
@@ -192,4 +193,9 @@ function resetRequired() {
 function displayError() {
     var msg = document.querySelector(".error-msg");
     msg.classList.remove("hidden");
+}
+
+function hideError() {
+    var msg = document.querySelector(".error-msg");
+    msg.classList.add("hidden");
 }
