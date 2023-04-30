@@ -27,10 +27,12 @@ function addNextInput() {
  * @param row - file-row div
  */
 function appendDeleteIcon(row) {
+    var iconParent = document.createElement("i");
     var icon = document.createElement("i");
     icon.classList.add("fa-solid", "fa-circle-minus");
-    icon.addEventListener("click", deleteRow)
-    row.appendChild(icon);
+    iconParent.addEventListener("click", deleteRow);
+    iconParent.appendChild(icon);
+    row.appendChild(iconParent);
 }
 
 /**
@@ -39,15 +41,24 @@ function appendDeleteIcon(row) {
  * @returns - upIcon and downIcon
  */
 function createDirectionIcons() {
+
     var upIcon = document.createElement("i");
+    var upIconParent = document.createElement("i");
+    upIcon.classList.add("fa-solid", "fa-circle-up");
+    upIconParent.classList.add("nav-button");
+    upIconParent.direction = "up";
+    upIconParent.addEventListener("click", swapPosition);
+
     var downIcon = document.createElement("i");
-    upIcon.classList.add("fa-solid", "fa-circle-up", "nav-button");
-    upIcon.direction = "up";
-    upIcon.addEventListener("click", swapPosition);
-    downIcon.classList.add("fa-solid", "fa-circle-down", "nav-button");
-    downIcon.direction = "down";
-    downIcon.addEventListener("click", swapPosition);
-    return [upIcon, downIcon];
+    var downIconParent = document.createElement("i");
+    downIcon.classList.add("fa-solid", "fa-circle-down");
+    downIconParent.classList.add("nav-button");
+    downIconParent.direction = "down";
+    downIconParent.addEventListener("click", swapPosition);
+
+    upIconParent.appendChild(upIcon);
+    downIconParent.appendChild(downIcon);
+    return [upIconParent, downIconParent];
 }
 
 
