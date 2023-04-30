@@ -64,16 +64,16 @@ body {
     background-color: #ab8e7a;
 }
 
-.file-row i {
+.file-row svg {
     color: #D0B8A8;
     font-size: 1.5rem;
 }
 
-.file-row i:hover {
+.file-row svg:hover {
     color: #c2a591;
 }
 
-.file-row i:active {
+.file-row svg:active {
     color: #ab8e7a;
 }
 
