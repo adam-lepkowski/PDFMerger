@@ -24,7 +24,11 @@ class TestIndex(TestCase):
     @patch("merger.views.merge", return_value=BytesIO(b"merged_content"))
     def test_index_post(self, merge_mock, pdfmodel_mock):
         uploaded_file = BytesIO(b"uploaded_content")
-        response = self.client.post("/", {"file-upload": uploaded_file})
+        data = {
+            "file-upload": uploaded_file,
+            "file-upload1": uploaded_file
+        }
+        response = self.client.post("/", data)
         merge_mock.assert_called_once()
         self.assertTrue(call().save() in pdfmodel_mock.method_calls)
         self.assertTrue(302, response.status_code)
