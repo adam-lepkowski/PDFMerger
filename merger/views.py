@@ -24,8 +24,7 @@ class IndexView(View):
         """
 
         context = {
-            "error": False,
-            "kit": os.environ["FONT_AWESOME"]
+            "error": False
         }
         return render(request, "merger/index.html", context)
 
@@ -43,8 +42,7 @@ class IndexView(View):
             filename = pdf.file.url.split("/")[-1]
             return HttpResponseRedirect(reverse("download", args=[filename]))
         context = {
-            "error": True,
-            "kit": os.environ["FONT_AWESOME"]
+            "error": True
         }
         return render(request, "merger/index.html", context)
 
